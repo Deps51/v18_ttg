@@ -1,0 +1,111 @@
+{% extends "home/header.html" %}
+
+{% block styles %}
+{% load staticfiles %}
+	<style>
+			html,
+			body {
+			 background-image:url({% static 'home/images/bg03.png' %});
+			 background-repeat: repeat-y;
+			 background-position: center;
+			 height:100%*height;
+			}
+		
+		.centered{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12" style="border: 1px solid green; border-radius: 8px; background-color: white; opacity: 0.9; height:100%*height; margin-bottom:20px;">
+			<div class='row'>
+				<h4 class='title' style='margin:15px;'><strong>What would you like to search for?</strong></h4>
+			</div>	
+			
+			<form method='post' action='../../home/search/'>{% csrf_token %}
+				<div class="form-group">
+					<input class="form-control" name='search' type='text' placeholder='1080 Asus Graphics Card'/>
+				</div><br>
+				<label><strong>Choose a category/categories to help refine your search</strong>:</label>
+				<div class="form-group">
+					<label style="padding-right:8px;"class="checkbox-inline">
+						<input name="cat" value="phone/tablet" type="checkbox"/>Phone/tablet
+					</label>
+					<label style="padding-right:8px;" class="checkbox-inline">
+						<input name="cat" value="pc/laptop" type="checkbox"/>PC/laptop 
+					</label>	
+					<label style="padding-right:8px;" class="checkbox-inline">
+						<input name ="cat" value="computer-part" type="checkbox"/>Computer Part(e.g. Graphics Card) 
+					</label>	
+					<label style="padding-right:8px;" class="checkbox-inline">
+						<input name="cat" value="cable/wire" type="checkbox"/>Cable/Wire
+					</label>	
+					<label style="padding-right:8px;" class="checkbox-inline">
+						<input name="cat" value="tv/monitor" type="checkbox"/>TV/Monitor
+					</label>	
+					<label style="padding-right:8px;" class="checkbox-inline">
+						<input name="cat" value="?1" type="checkbox"/>??
+					</label>	
+					<label style="padding-right:8px;" class="checkbox-inline">
+						<input name="cat" value="?2" type="checkbox"/>??
+					</label>	
+					<label style="padding-right:8px;" class="checkbox-inline">
+						<input name="cat" value="other" type="checkbox"/>Other
+					</label>
+				</div>
+				<div class="form-group">
+					<input class="form-control" name='min_price' type='number' placeholder='Minimum Price'/><br>
+					<input class="form-control" name='max_price' type='number' placeholder='Maximum Price'/>
+				</div>
+ 
+					<input style="margin-bottom: 10px;" class="btn btn-primary" type='submit' value='Search'/>
+				</form>
+			
+			
+			<!--<form method='post' action='../../home/search/'>{% csrf_token %}
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2" style="background:blue; height:50px;">
+					<input class="form-control" name='search' type='text' placeholder='1080 Asus Graphics Card'/></div>
+				</div>
+					<input name='min_price' type='number' placeholder='Minimum Price'/>
+					<input name='max_price' type='number' placeholder='Maximum Price'/>
+					<input type='submit' value='Search'/>
+				</form>-->
+			
+			
+			
+		</div>
+	</div>	
+</div>
+<!--<div style='border: 1px solid green; background-color: white; opacity: 0.9;'>
+	<div class="container-fluid">
+		<div class='row'>
+				<h4 class='title' style='margin:15px;'><strong>What would you like to search for?</strong></h4>
+		</div>
+				<form method='post' action='../../home/search/'>{% csrf_token %}
+					<div class="row">
+						<div class= "col-sm-4 offset-sm-4"><input style="margin-left:-30px;" name='search' type='text' placeholder='1080 Asus Graphics Card'/></div>
+					</div><br><br>
+					<div class="row">
+						<div class="col-sm-3 offset-sm-3">
+							<input name='min_price' type='number' placeholder='Minimum Price'/>
+						</div>
+						<div class="col-sm-3">
+								<input name='max_price' type='number' placeholder='Maximum Price'/>
+						</div>
+					</div>
+					<input type='submit' value='Search'/>
+				</form>
+	</div>
+</div>-->
+
+
+
+{% endblock %}

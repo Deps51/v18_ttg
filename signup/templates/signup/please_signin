@@ -1,0 +1,11 @@
+{% extends "home/header.html" %}
+
+{% block styles %}
+{% endblock %}
+
+
+{% block content %}
+
+	<h1>Please sign in in order to do this</h1>
+	
+{% endblock %}

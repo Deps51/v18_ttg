@@ -1,0 +1,12 @@
+{% extends "home/header.html" %}
+
+{% block content %}
+<div style="border: 2px solid #00dba0; padding:20px;">
+  <center><h2><strong>Thanks for singing up!</strong></h2><br><br></center>
+  <h5>Feel free to navigate round the site and add products to your basket - this will allow you to to get notified about price drops.<br>
+      Please use use the navigation bar at the top to go to a different page.</h5>
+
+	<h2>{{ user.get_full_name }}</h2>
+
+</div>
+{% endblock %}

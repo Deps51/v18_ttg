@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>TheTechGarage</title>
+	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type = "text/css"/>
+	<link rel="icon" type="image/png" href={% static 'results/images/logo-132x132.png' %}/>
+	<!--<link rel="stylesheet" href="{% static 'home/styles.css' %}" type = "text/css"/> -->
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	
+	{% block styles %}
+	{% endblock %}
+	<style type="text/css">
+
+		
+			li {
+				display:inline;
+			}
+		.top-nav li{
+			padding: 3px;
+			border-radius: 4px;
+			padding-left: 5px;
+			border: 1px solid #00dba0;
+			margin-left: 3px;
+			
+		}
+		
+		.top-nav li:hover{
+
+			background-color: rgba(0,219,160,0.4)
+			
+		}
+		.top-nav{
+			padding: 10px 10px 0px 5px;
+		}
+		
+		.site-form{
+      margin-top: 60px;
+      border: 2px solid #00dba0;
+      padding: 20px;
+	  margin-bottom:10px;
+    }
+
+    .site-form input{
+      display: block;
+      margin: 20px 0 0 0;
+      padding: 10px;
+    }
+    
+    .helptext, .helptext ul{
+      margin: 0 auto 20px;
+      color: #bbb;
+      font-size = 0.9em;
+      display: block;
+    }
+    
+    .errorlist li{
+      padding: 7px;
+      list-style-type: none;
+      border: 1px solid #ff5722;
+      color: #ff5722;
+      margin: 10px 1px;
+    }
+    
+    .errorlist{
+      padding: 0;
+    }
+    
+			</style>
+</head>
+
+<body class="body">
+	<div class="container-fluid" style="min-height:95%;">
+		<div class="row" style='background: blue; opacity: 0.9;'>
+			  <div class="col-sm-2">
+				  <br>
+			  </div>
+			  <div class="col-sm-8">
+				  <br>
+				  <center>
+				  <h3><h1> The Tech Garage </h1></h3>
+					  
+				  </center>
+			  </div>
+			 <div>
+				 {% if user.is_authenticated %}
+				 	<ul class='top-nav'>
+						<li><a href="../../home">Home </a></li>
+						<li><a href="">About </a></li>
+						<li><a href="../../accounts/">{{ user.username }}</a></li>
+							
+				 </ul>
+				 
+				 {% else %}
+
+					<ul class='top-nav'>
+						<li><a href="../../home">Home </a></li>
+						<li><a href="">About </a></li> 
+						<li><a href="../../accounts/">Signin</a></li>
+					</ul>
+				{% endif %}
+			</div>
+		</div><hr>
+
+		<div class="row">
+		  <div class="col-sm-2">
+		  <br>
+
+		  <br>
+		   <!-- Great, til you resize. -->
+			<!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
+			<!--<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+			  <ul class="nav nav-pills nav-stacked">
+				<li><a href='/'>Home</a></li>
+				<li><a href='/blog/'>Blog</a></li>
+				<li><a href='/contact/'>Contact</a></li>
+			  </ul> -->
+			</div> <!--well bs-sidebar affix-->
+		  </div> <!--col-sm-2-->
+		  <div class="col-sm-10">
+		  
+			<div class='container-fluid'>
+			<br><br>
+			   {% block content %}
+			   {% endblock %}	
+			</div>
+		  </div>
+		</div> 
+	
+	
+	
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+{% extends "home/header.html" %}
+
+{% block styles %}
+{% load staticfiles %}
+	<style>
+		html,
+			body {
+
+			 height:100%*height;
+			}
+		.boxed {
+  				border: 3px solid black;
+				overflow: scrool;
+				background-color: #f6f6f6
+			}
+		.web{
+			border: 1px solid blue;
+			vertical-align: middle;
+			position: relative;
+		}
+		.down{
+		padding-top: 5px;}
+	</style>
+{% endblock %}
+
+
+{% block content %}
+
+	<a href='../logout/' style='float: right;'><button>logout</button></a>
+	<h1> Welcome, {{ user.username }}</h1><br>
+    <h3>Your Shopping Basket:</h3>
+       
+	<!--<h3>m2m: {{user.profile.productm2m.all}}</h3>-->
+
+		{% for item in basket %}
+			<div class="boxed">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-4">
+							<img src='{{item.4}}' alt='Image can not be displayed right now'/> 
+						</div>
+						<div class="col-sm-4">
+							<strong>{{ item.1 }}</strong><br><br>
+							£{{ item.3 }}<br><br>
+								<strong style='color: green;'>Website: {{ item.0 }}</strong><br><br>
+						</div>
+						<div class="col-sm-4">
+							Brand: {{ item.2 }}<br><br>
+							<a href="{{item.5}}">Click to go to website</a><br><br>
+							
+							<form method='post' action='../../accounts/remove/?q={{item.6}}' name= 'remove'>
+								{% csrf_token %}
+								<!--<input name='product' type='text' value='{{item}}'/> -->
+								<button name= 'button' type='submit' class='btn'><img src={% static 'results/images/remove_basket_02.png' %} alt='Image cannot be displayed right now'></button>
+							</form>
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<br><br>
+
+		{% endfor %}
+
+{% endblock %}
+
+
+
+
+ 

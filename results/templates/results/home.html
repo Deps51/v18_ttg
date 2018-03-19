@@ -1,0 +1,78 @@
+{% extends "home/header.html" %}
+
+{% block styles %}
+{% load staticfiles %}
+	<style>
+		html,
+			body {
+			 background-image:url({% static 'results/images/square_bg02.jpg' %});
+			 background-repeat: repeat-y;
+			 background-position: center;
+			 height:100%*height;
+			}
+		.boxed {
+  				border: 3px solid black;
+				overflow: scrool;
+				background-color: #f6f6f6
+			}
+		.web{
+			border: 1px solid blue;
+			vertical-align: middle;
+			position: relative;
+		}
+		.down{
+		padding-top: 5px;}
+	</style>
+{% endblock %}
+
+
+{% block content %}
+
+	{% for product_list in list %}
+		{% for item in product_list %}
+			<div class="boxed">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-4">
+							<img src='{{item.4}}' alt='Image can not be displayed right now'/> 
+						</div>
+						<div class="col-sm-4">
+							<strong>{{ item.1 }}</strong><br><br>
+							£{{ item.3 }}<br><br>
+								<strong style='color: green;'>Website: {{ item.0 }}</strong><br><br>
+						</div>
+						<div class="col-sm-4">
+							Brand: {{ item.2 }}<br><br>
+							<a href="{{item.5}}">Click to go to website</a><br><br>
+							
+							
+							<form method='post' action='../../accounts/myaccount/?q={{item.6}}' name= 'form'>
+								{% csrf_token %}
+								<!--<input name='product' type='text' value='{{item}}'/> -->
+								<button name= 'button' type='submit' class='btn'><img src={% static 'results/images/basket_02.png' %} alt='Image cannot be displayed right now'></button>
+							</form>
+							
+						</div>
+								<!-- Image: {{ item.4 }}<br> -->
+					</div>
+
+				</div>
+			</div>
+			<br><br>
+
+		{% endfor %}
+	{% endfor %}
+
+<h3><strong>Don't see what your looking for? Why not try another <a href="../">search</a> but use more <i>Categorys</i> and a wider <i>Price Range</i> to help refine your search. </strong></h3>
+
+
+	<!-- <form>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Submit</button>
+
+	</form> -->
+
+
+
+{% endblock %}
